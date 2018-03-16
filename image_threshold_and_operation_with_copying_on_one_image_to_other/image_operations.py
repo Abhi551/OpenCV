@@ -36,14 +36,17 @@ ret , mask = cv2.threshold(grayscale , 220 , 255 , cv2.THRESH_BINARY_INV)
 
 ##ret1 , mask1 = cv2.threshold(grayscale , 220 , 255 , cv2.THRESH_BINARY)
 ## mask_inv gives the same value as the mask1
+
 mask_inv = cv2.bitwise_not(mask)
 
-
+cv2.imshow('mask' , mask)
 
 ## we pasted mask_inv in ROI , where mask_inv is the inverted grayscale area from threshold
 ## here image with white background is used to retain the ROI
 
 img1_bg = cv2.bitwise_and(ROI , ROI , mask = mask_inv)
+
+cv2.imshow('img1_bg' , img1_bg)
 
 ## we pasted mask onto the mainlogo image 
 ## here image with black background and white logo is used to retain the logo
