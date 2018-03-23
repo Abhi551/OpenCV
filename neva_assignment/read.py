@@ -64,10 +64,9 @@ for img in glob.glob(filename+'/*.JPG'):
         
         print (str(img))
 
-        ## saving the final Region Of Image
-        #cv2.imwrite('save_'+str(img) , ROI)
-
-
+        
+        
+        
         cv2.waitKey(0)
         cv2.destroyAllWindows()
         

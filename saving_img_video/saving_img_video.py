@@ -56,7 +56,6 @@ cap.release()
 cv2.destroyAllWindows()
 
 
-
 ## saving the image 
 ## just use cv2.imwrite('filename' ,  file)
 
@@ -108,3 +107,4 @@ while 1:
 cap.release()
 out.release()
 cv2.destroyAllWindows()
+'''
