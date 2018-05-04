@@ -5,7 +5,9 @@ import sys
 
 filename = input("Enter the file name in which images are present = ")
 
-for img in glob.glob(filename+'/*.JPG'):
+
+
+for img in glob.glob(filename+'/*.*'):
     try :
         var_img = cv2.imread(img)
 
@@ -46,26 +48,34 @@ for img in glob.glob(filename+'/*.JPG'):
 
         ## starting for front to encounter the first occurance of 255 in threshold image
         for i in range(width) :
-                if 255 in threshold_img[i]:
-                    start = i
+                if 255 in threshold_img[i] :
+                    if 255 in threshold_img[i+20]:
+                        start = i
+                    else:
+                        pass
                     break
         
         ## starting from back to encounter the first occurance of 255 in threshold image
         for j in range(width-1 , 0 , -1):
             if 255 in threshold_img[j]:
-                end = j
-                break
+                    if 255 in threshold_img[i+20]:
+                        end = j
+                    else :
+                        pass
+                    break
 
 
         ## getting the final Region Of Image 
 
         ROI = dilation[start : end , 0 : height]
-        cv2.imshow(str(img)+"_ROI" , ROI)
+        cv2.imshow(str(img)+"_ROI.JPG" , ROI)
         
         print (str(img))
+        if "png" in str(img):
+            cv2.imwrite(str(img)+"_save.png" , ROI)
+        else :
+            cv2.imwrite(str(img)+"_save.JPG" , ROI)
 
-        
-        
         
         cv2.waitKey(0)
         cv2.destroyAllWindows()
